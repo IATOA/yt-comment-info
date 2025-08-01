@@ -72,7 +72,7 @@
       represent that of a channel from a previous video instead of the current.
 
       To fix this, we listen for changes to the href of the comment to trigger
-      and update to the subscriber count.
+      an update to the subscriber count.
     */
     const observer = new MutationObserver((mutationsList) => {
       mutationsList
@@ -97,20 +97,27 @@
     });
   };
 
-  // Create an observer to listen for any new comment elements
-  const observer = new MutationObserver((mutationsList) => {
-    mutationsList.forEach((mutation) => {
-      mutation.addedNodes.forEach((el) => {
-        // YTD-COMMENT-VIEW-MODEL appears to be a tag that wraps a single comment or reply
-        if (el.tagName === 'YTD-COMMENT-VIEW-MODEL') {
-          addCommentSubCount(el);
-        }
-      });
+  // Process all comment elements that don't already have subscriber counts
+  const processComments = () => {
+    const comments = document.querySelectorAll(
+      'ytd-comment-view-model:not([data-sub-count-added])'
+    );
+    comments.forEach((comment) => {
+      comment.setAttribute('data-sub-count-added', 'true');
+      addCommentSubCount(comment);
     });
+  };
+
+  // Process comments that are already on the page
+  processComments();
+
+  // Create an observer to listen for any new comment elements
+  const observer = new MutationObserver(() => {
+    processComments();
   });
 
-  // Listen for comments on an element which always starts loaded
-  observer.observe(document.querySelector('ytd-app'), {
+  // Listen for changes on the entire document
+  observer.observe(document.body, {
     childList: true,
     subtree: true,
   });
