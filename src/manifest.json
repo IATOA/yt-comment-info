@@ -1,29 +1,24 @@
 {
-    "name": "Subscriber Count on Comments for YouTube™",
-    "description": "Displays the number of YouTube™ subscribers next to each comment under every video.",
-    "version": "1.1.15",
-    "manifest_version": 3,
-    "icons": {
-        "48": "icons/icon48.png",
-        "64": "icons/icon64.png",
-        "128": "icons/icon128.png"
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "https://www.youtube.com/*",
-                "http://www.youtube.com/*"
-            ],
-            "js": [
-                "js/content.js"
-            ],
-            "all_frames": false,
-            "run_at": "document_end"
-        }
-    ],
-    "browser_specific_settings": {
-        "gecko": {
-            "id": "{07372fe3-6650-4175-aae3-057f2d75ef8d}"
-        }
+  "name": "Subscriber Count on Comments for YouTube™",
+  "description": "Displays the number of YouTube™ subscribers next to each comment under every video.",
+  "version": "1.1.15",
+  "manifest_version": 3,
+  "icons": {
+    "48": "icons/icon48.png",
+    "64": "icons/icon64.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*", "http://www.youtube.com/*"],
+      "js": ["js/content.js"],
+      "all_frames": false,
+      "run_at": "document_end"
     }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{07372fe3-6650-4175-aae3-057f2d75ef8d}"
+    }
+  }
 }
