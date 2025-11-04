@@ -1,7 +1,7 @@
 {
-  "name": "Subscriber Count on Comments for YouTube™",
-  "description": "Displays the number of YouTube™ subscribers next to each comment under every video.",
-  "version": "1.1.16",
+  "name": "Channel Information on Comments for YouTube™",
+  "description": "Displays the number of YouTube™ subscribers, the information about the last video and the number of videos published by the channel, next to each comment under every video.",
+  "version": "1.1.16.1",
   "manifest_version": 3,
   "icons": {
     "48": "icons/icon48.png",
